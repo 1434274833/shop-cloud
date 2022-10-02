@@ -1,0 +1,10 @@
+# Project exclude paths
+/commom/shop-cloud-commom/target/
+/commom/shop-cloud-shared-pojo/target/
+/commom/shop-cloud-web-components/target/
+/domain/item/shop-item-api/target/
+/domain/item/shop-item-mapper/target/
+/domain/item/shop-item-pojo/target/
+/domain/item/shop-item-service/target/
+/domain/item/shop-item-web/target/
+/platform/registry-center/target/

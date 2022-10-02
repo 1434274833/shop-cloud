@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.mapper.ItemsInfoVoMapper">
+    <resultMap id="itemInfoResult" type="com.shop.item.pojo.vo.ItemInfoVo">
+
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="itemName" property="itemName" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="sellCounts" property="sellCounts" jdbcType="INTEGER"/>
+        <result column="specId" property="specId" jdbcType="VARCHAR"/>
+        <collection property="itemImgList" ofType="com.food.pojo.vo.ItemImgVo">
+            <result column="imgId" property="imgId"/>
+            <result column="isMain" property="isMain"/>
+            <result column="imgSort" property="sort"/>
+            <result column="imgUrl" property="url"/>
+        </collection>
+
+        <collection property="itemParamList" ofType="com.shop.item.pojo.vo.ItemParamsVo">
+            <result column="paramId" property="paramId"/>
+            <result column="producPlace" property="producPlace"/>
+            <result column="footPeriod" property="footPeriod"/>
+            <result column="brand" property="brand"/>
+            <result column="factoryName" property="factoryName"/>
+            <result column="factoryAddress" property="factoryAddress"/>
+            <result column="packagingMethod" property="packagingMethod"/>
+            <result column="weight" property="weight"/>
+            <result column="storageMethod" property="storageMethod"/>
+        </collection>
+
+
+        <collection property="itemSpecList" ofType="com.shop.item.pojo.vo.ItemSpecVo">
+            <result column="specId" property="specId"/>
+            <result column="specName" property="specName"/>
+            <result column="priceDiscount" property="priceDiscount"/>
+            <result column="priceNormal" property="priceNormal"/>
+            <result column="stock" property="stock"/>
+            <result column="discounts" property="discounts"/>
+
+        </collection>
+
+    </resultMap>
+
+
+    <select id="getItemInfo" resultMap="itemInfoResult" parameterType="String">
+        select i.id                as id,
+               i.`item_name`       as itemName,
+               i.content           as content,
+
+               i.`sell_counts`     as sellCounts,
+               img.id              as imgId,
+               img.is_main         as isMain,
+               img.sort            as imgSort,
+               img.url             as imgUrl,
+               isp.id              as specId,
+               isp.`name`          as specName,
+               isp.price_discount  as priceDiscount,
+               isp.price_normal    as priceNormal,
+               isp.stock           as stock,
+               isp.discounts       as discounts,
+               ip.id               as paramId,
+               ip.packaging_method as packagingMethod,
+               ip.brand            as brand,
+               ip.eat_method       as eatMethod,
+               ip.factory_address  as factoryAddress,
+               ip.factory_name     as factoryName,
+               ip.foot_period      as footPeriod,
+               ip.produc_place     as producPlace,
+               ip.storage_method   as stroageMethod,
+               ip.weight           as weight
+
+        FROM items i
+                 LEFT JOIN items_img img
+                           on i.id = img.item_id
+                 LEFT JOIN items_spec isp
+                           on i.id = isp.item_id
+                 LEFT JOIN items_param ip
+                           on i.id = ip.item_id
+
+        WHERE i.id = #{itemId}
+
+    </select>
+</mapper>

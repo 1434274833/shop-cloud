@@ -1,0 +1,45 @@
+############################################################
+#
+# 配置数据源信息
+#
+############################################################
+spring:
+  servlet:
+    multipart:
+      max-file-size: 500000 #上传文件最大500KB
+      max-request-size: 500000 #最大请求500KB
+  profiles:
+    active: pro
+
+
+
+
+
+############################################################
+#
+# mybatis 配置
+#
+############################################################
+mybatis:
+  type-aliases-package: com.food.pojo          # 所有POJO类所在包路径
+  mapper-locations: classpath:mapper/*.xml      # mapper映射文件
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #sql语句打印建议在开发环境下使用，否则日志很冗余没有必要
+
+#    map-underscore-to-camel-case: true
+#    mapUnderscoreToCamelCase: true
+#    auto-mapping-behavior: partial
+############################################################
+#
+# web访问端口号  约定：8088
+#
+############################################################
+server:
+  port: 8088
+  tomcat:
+    uri-encoding: UTF-8
+  max-http-header-size: 80KB
+pagehelper:
+  support-methods-arguments: true
+  helper-dialect: mysql
+

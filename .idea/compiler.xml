@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="shop-item-api" />
+        <module name="registry-center" />
+        <module name="shop-item-service" />
+        <module name="shop-item-web" />
+        <module name="shop-cloud-commom" />
+        <module name="shop-cloud-shared-pojo" />
+        <module name="shop-cloud-web-components" />
+        <module name="shop-item-mapper" />
+        <module name="shop-item-pojo" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
